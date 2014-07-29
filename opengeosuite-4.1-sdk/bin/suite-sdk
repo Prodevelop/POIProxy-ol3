@@ -52,11 +52,15 @@ List of options:
 
 ## Usage for package command
 PACKAGE_USAGE="
-Usage: $NAME package <app-path> <build-path>
+Usage: $NAME package [<options>] <app-path> <build-path>
 
 Package an existing application.  The <app-path> argument must be the path to an
 existing application. The <build-path> is the location where the WAR file package
 will be created.
+
+List of options:
+
+    -u | --uncompressed   uncompressed    Packages uncompressed sources. Default is false.
 
 "
 
@@ -121,6 +125,10 @@ until [ -z "$1" ]; do
         -l|--local-port)
             shift; LOCAL_PORT=$1; shift
             ANT_ARGS="$ANT_ARGS -Dapp.port=$LOCAL_PORT"
+            ;;
+        -u|--uncompressed)
+            shift; UNCOMPRESSED=$1; shift
+            ANT_ARGS="$ANT_ARGS -Du=$UNCOMPRESSED"
             ;;
         -h|--help)
             shift
