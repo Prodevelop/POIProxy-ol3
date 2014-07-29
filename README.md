@@ -19,6 +19,8 @@ PATH_TO_POIPROXY-OL3_DIR/opengeosuite-4.1-sdk/bin
 
 `suite-sdk debug PATH_TO_POIPROXY-OL3_DIR`
 
+The application will be up and running in your browser at: http://localhost:9080
+
 Note: You'll need to configure a proxy in order to avoid your browser 'cross-domain policy'
 
 If you are using Apache with mod_proxy configure this proxies:
@@ -36,6 +38,8 @@ If you are using Apache with mod_proxy configure this proxies:
         ProxyPass            /lib   http://localhost:9080/lib
         ProxyPassReverse     /lib  http://localhost:9080/lib
 </code>
+
+In this case the application will be up and running in your browser at: http://localhost/poiproxy-demo
 
 ***Package the application***
 
