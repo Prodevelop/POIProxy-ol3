@@ -46,3 +46,7 @@ In this case the application will be up and running in your browser at: http://l
 `suite-sdk package PATH_TO_POIPROXY-OL3_DIR`
 
 This will generate a war file deployable on a servlet container (e.g. Tomcat)
+
+## Screenshots
+
+<img height=400 src="https://raw.githubusercontent.com/Prodevelop/POIProxy-ol3/master/img/poiproxy-ol3-00.png" /> &nbsp;   <img height=400 src="https://raw.githubusercontent.com/Prodevelop/POIProxy-ol3/master/img/poiproxy-ol3-01.png" />  &nbsp;  <img height=400 src="https://raw.githubusercontent.com/Prodevelop/POIProxy-ol3/master/img/poiproxy-ol3-02.png" />
