@@ -9,6 +9,7 @@
  * @require poiclient.js
  * @require poiproxy.js
  * @require ficontent.js
+ * @require poiproxy_cache.js
  * @require funcs.js
  * @require newservice.js
  * @require knockout-3.1.0.js
@@ -19,6 +20,7 @@
 var poiproxy = new POIProxyClient(poiProxyURL);
 var ficontent = new FIContentClient(ficontentURL, 'osm');
 var ficontentdb = new FIContentClient(ficontentURL, 'dbpedia');
+var poiproxy_cache = new POIProxyCache(poiProxyCacheURL, config.cache);
 var map;
 var select;
 var selectedFeature;
@@ -49,14 +51,17 @@ var init = function() {
   ficontentdb.createLayers(function(filayersdb) {
     ficontent.createLayers(function(filayers) {
       poiproxy.createLayers(function(layers) {
-        layers = layers.concat(filayers);
-        layers = layers.concat(filayersdb);
-        layers = layers.sort(function(a, b) {
-          if (a.get('name') < b.get('name')) return -1;
-          return 1;
+        poiproxy_cache.createLayers(function(cacheLayers) {
+            layers = layers.concat(filayers);
+            layers = layers.concat(filayersdb);
+            layers = layers.concat(cacheLayers);
+            layers = layers.sort(function(a, b) {
+              if (a.get('name') < b.get('name')) return -1;
+              return 1;
+            });
+            initMap(layers);
+            initUI(layers);
         });
-        initMap(layers);
-        initUI(layers);
       });
     });
   });

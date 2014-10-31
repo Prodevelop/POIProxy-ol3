@@ -1,12 +1,23 @@
 var berlin = ol.proj.transform([13.392333984375, 52.50953477032729], 'EPSG:4326', 'EPSG:3857');
 var barcelona = ol.proj.transform([2.1807861328125, 41.38917324986403], 'EPSG:4326', 'EPSG:3857');
+var transmusicales = ol.proj.transform([-1.734844, 48.056843], 'EPSG:4326', 'EPSG:3857');
+
 
 function elastic(t) {
     return Math.pow(2, -10 * t) * Math.sin((t - 0.075) * (2 * Math.PI) / 0.3) + 1;
 }
 
-var flyToBerlin = document.getElementById('fly-to-berlin');
-flyToBerlin.addEventListener('click', function() {
+// var flyToBerlin = document.getElementById('fly-to-berlin');
+// flyToBerlin.addEventListener('click', function() {
+//     fly(transmusicales);
+// }, false);
+
+var flyTo = document.getElementById('fly-to-transmusicales');
+flyTo.addEventListener('click', function() {
+    fly(transmusicales);
+}, false);
+
+function fly(center) {
     var view = map.getView();
     var duration = 7000;
     var start = +new Date();
@@ -22,8 +33,9 @@ flyToBerlin.addEventListener('click', function() {
         start: start
     });
     map.beforeRender(pan, bounce);
-    view.setCenter(berlin);
-}, false);
+    view.setCenter(center);
+    view.setZoom(18);
+};
 
 var elasticToBarcelona = document.getElementById('elastic-to-barcelona');
 elasticToBarcelona.addEventListener('click', function() {

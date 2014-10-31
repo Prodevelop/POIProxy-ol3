@@ -1,2 +1,3 @@
 *.war
 POIProxy-ol3/
+.DS_Store

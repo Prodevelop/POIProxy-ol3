@@ -1,6 +1,7 @@
 var center = [242764.00183371827, 5069915.212099172];
 var zoom = 10;
 var poiProxyURL = '/poiproxy';
+var poiProxyCacheURL = '/poiproxy_cache';
 // var registerServiceURL = '/ficontent/api/poiproxy/registerService';
 var registerServiceURL = '/poiproxy/registerService';
 var ficontentURL = '/ficontent/api';
@@ -406,6 +407,20 @@ var config = {
         "search": true,
         "strategy": "bbox",
         "name": "Places - Instagram"
+    }
+  },
+  "cache" : {
+    "instagram_cache": {
+        "browse": true,
+        "strategy": "tile",
+        "name": "Cache Instagram",
+        "cacheFolder": "instagram"
+    },
+    "flickr_cache": {
+        "browse": true,
+        "strategy": "tile",
+        "name": "Cache Flickr",
+        "cacheFolder": "flickr"
     }
   }
 }
